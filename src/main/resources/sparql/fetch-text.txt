@@ -1,0 +1,6 @@
+prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#>
+
+select ?text WHERE{
+  <$0$> nif:isString ?text
+}

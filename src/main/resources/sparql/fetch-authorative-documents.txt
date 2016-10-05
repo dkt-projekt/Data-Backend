@@ -1,0 +1,12 @@
+prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#>
+
+select ?doc (count(?text) as ?count) WHERE{ 
+ ?s nif:referenceContext ?doc .
+ ?s itsrdf:taClassRef ?class .
+ ?s nif:anchorOf ?text.
+ FILTER regex(?text, "$0$") 
+}
+GROUP BY ?doc
+ORDER BY DESC(?count)
+LIMIT 10

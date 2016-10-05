@@ -1,0 +1,8 @@
+prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#>
+
+select ?s ?p ?o WHERE{ 
+ ?s nif:referenceContext <$0$> .
+ ?s ?p ?o
+}
+LIMIT 500000000

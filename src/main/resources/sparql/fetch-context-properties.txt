@@ -1,0 +1,6 @@
+prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+
+select ?p ?o WHERE{ 
+ <$0$> ?p ?o
+}
+LIMIT 1000000

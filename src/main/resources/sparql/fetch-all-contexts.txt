@@ -1,0 +1,8 @@
+prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+
+select ?uri ?text WHERE{ 
+ ?uri a nif:Context .
+ ?uri nif:isString ?text
+}
+OFFSET 1000
+LIMIT 20

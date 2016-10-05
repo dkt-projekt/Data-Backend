@@ -1,0 +1,11 @@
+prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#>
+prefix dktnif: <http://dkt.dfki.de/ontologies/nif#> 
+
+select ?uri ?startdate ?enddate WHERE{ 
+ ?uri a nif:Context .
+ ?s  nif:referenceContext ?uri .
+ ?s dktnif:averageLongitude  ?longitude 
+ ?s dktnif:averageLatitude   ?latitude
+}
+LIMIT 500000000
