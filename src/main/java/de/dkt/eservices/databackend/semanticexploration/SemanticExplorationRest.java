@@ -19,7 +19,7 @@ public class SemanticExplorationRest {
 	@Autowired
 	SemanticExplorationService cls;
 	
-	@RequestMapping(value = "/data-backend/{collection}/semanticexploration", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/data-backend/{collection}/semanticexploration", method = { RequestMethod.GET })
 	public ResponseEntity<String> getCollectionSemanticExploration(
 			HttpServletRequest request, 
 			@PathVariable(value = "collection") String collectionName,

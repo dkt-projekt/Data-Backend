@@ -117,7 +117,7 @@ public class CollectionManagementRest extends BaseRestController{
 	}
 	
 
-	@RequestMapping(value = "/data-backend/{collection}/{documentName}", method = { RequestMethod.POST })
+	@RequestMapping(value = "/data-backend/{collection}/documents/{documentName}", method = { RequestMethod.POST })
 	public ResponseEntity<String> addDocumentToCollection(
 			HttpServletRequest request, 
 			@RequestHeader(value = "Accept", required = false) String acceptHeader,
@@ -169,7 +169,7 @@ public class CollectionManagementRest extends BaseRestController{
 	}
 
 	
-	@RequestMapping(value = "/data-backend/{collection}/{document}", method = { RequestMethod.GET })
+	@RequestMapping(value = "/data-backend/{collection}/documents/{document}", method = { RequestMethod.GET })
 	public ResponseEntity<String> getDocument(
 			HttpServletRequest request, 
 			@PathVariable(value = "collection") String collectionName,
@@ -188,7 +188,7 @@ public class CollectionManagementRest extends BaseRestController{
 	}	
 
 	
-	@RequestMapping(value = "/data-backend/{collection}/{document}", method = { RequestMethod.PUT })
+	@RequestMapping(value = "/data-backend/{collection}/documents/{document}", method = { RequestMethod.PUT })
 	public ResponseEntity<String> updateDocument(
 			HttpServletRequest request, 
 			@RequestParam(value = "input", required = false) String input,
@@ -247,7 +247,7 @@ public class CollectionManagementRest extends BaseRestController{
 		}
 	}
 
-	@RequestMapping(value = "/data-backend/{collectionName}/{documentName}", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/data-backend/{collectionName}/documents/{documentName}", method = { RequestMethod.DELETE })
 	public ResponseEntity<String> deleteDocument(
 			HttpServletRequest request, 
 			@RequestHeader(value = "Accept", required = false) String acceptHeader,

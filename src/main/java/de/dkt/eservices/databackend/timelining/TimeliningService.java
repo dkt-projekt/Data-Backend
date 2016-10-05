@@ -22,7 +22,6 @@ public class TimeliningService {
 			if(limit==0){
 				limit=Integer.MAX_VALUE;
 			}
-			
 			sparqlService.setCollectionName(collectionName);
 //			JSONObject mediaO = new JSONObject();
 //			mediaO.put("url", "//www.flickr.com/photos/tm_10001/2310475988/");
