@@ -72,7 +72,10 @@ public class ClusteringService {
 			}
 		}			
 		
-
+		if(entities.isEmpty() || docsMap.isEmpty()){
+			String msg = "<div><p>There are no entities for collection ["+collectionName+"] to be clustered.</p></div>";
+			return msg;
+		}
 
 		//Generate headers for the file.
 		String arff = "@RELATION "+collectionName+"_Clustering\n";

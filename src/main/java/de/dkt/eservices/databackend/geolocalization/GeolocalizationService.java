@@ -1,5 +1,6 @@
 package de.dkt.eservices.databackend.geolocalization;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,8 @@ import de.dkt.eservices.databackend.common.SparqlService;
 
 @Service
 public class GeolocalizationService {
+
+	Logger logger = Logger.getLogger(GeolocalizationService.class);
 
 	@Autowired
 	SparqlService sparqlService;
@@ -65,9 +68,8 @@ public class GeolocalizationService {
 			return output;
 		}
 		catch(Exception e){
-//			String msg = "Error at generating geolocalization for collection: "+collectionName;
-			e.printStackTrace();
-			return "";
+			logger.error(e.getMessage(), e);
+			return e.getMessage();
 		}	
 	}
 

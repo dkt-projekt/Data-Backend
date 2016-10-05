@@ -19,7 +19,7 @@
 	 
 	<context:component-scan base-package="eu.freme.common"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.clustering"/>
-	<context:component-scan base-package="de.dkt.eservices.databackend.collectionmanagemenet"/>
+	<context:component-scan base-package="de.dkt.eservices.databackend.collectionmanagement"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.geolocalization"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.lists"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.semanticexploration"/>
