@@ -75,11 +75,11 @@ public class CollectionManagementRest extends BaseRestController{
 			@RequestParam(value = "collectionName", required = false) String collectionName,
 			@RequestParam(value = "description", required = false) String description,
 			@RequestParam(value = "user", required = false) String user,
-			@RequestParam(value = "analysis", required = false) String analysis,
+			@RequestParam(value = "pipeline", required = false) int pipeline,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
 			String result = "";
-			boolean collectionId = cms.createCollection(collectionName, description, user, analysis);
+			boolean collectionId = cms.createCollection(collectionName, description, user, pipeline);
 			if(collectionId){//priv, sUsers, sPasswords)){
 				result = "The collection "+collectionName+" [with Id="+collectionId+"] has been successfully created!!";
 			}

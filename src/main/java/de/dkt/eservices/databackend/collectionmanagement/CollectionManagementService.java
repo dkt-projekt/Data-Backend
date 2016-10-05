@@ -40,9 +40,10 @@ public class CollectionManagementService {
 	@Value("${dkt.services.baseUrl:http://dev.digitale-kuratierung.de/api}")
 	String baseURL;
 
-	public boolean createCollection(String collectionName, String description, String user, String analysis) throws ExternalServiceFailedException {
+	public boolean createCollection(String collectionName, String description, String user, int analysis) throws ExternalServiceFailedException {
 		try{
 			HttpResponse<String> response = Unirest.post(baseURL+"/document-storage/collections/"+collectionName).
+					queryString("pipeline", analysis).
 					asString();
 			if(response.getStatus()==200){
 //				HttpResponse<String> responseLucene = Unirest.post(baseURL+"/e-lucene/indexes").
