@@ -102,7 +102,7 @@ public class CollectionManagementService {
 			int pipelineId = analysis;
 			HttpResponse<String> response = Unirest.post(baseURL+"/document-storage/collections/"+collectionName+"/documents").
 					header("Content-Type", contentType).
-					queryString("filename", fileName).
+					queryString("fileName", fileName).
 					queryString("pipeline", pipelineId).
 					body(content).
 					asString();
