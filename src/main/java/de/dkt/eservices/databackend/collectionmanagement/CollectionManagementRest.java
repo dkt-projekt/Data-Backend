@@ -156,7 +156,7 @@ public class CollectionManagementRest extends BaseRestController{
 	public ResponseEntity<String> getDocument(
 			HttpServletRequest request, 
 			@PathVariable(value = "collection") String collectionName,
-			@RequestParam(value = "document") String documentName,
+			@RequestParam(value = "documentName") String documentName,
 			@RequestParam(value = "user", required=false) String user,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
