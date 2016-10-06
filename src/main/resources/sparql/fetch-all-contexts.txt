@@ -4,5 +4,4 @@ select ?uri ?text WHERE{
  ?uri a nif:Context .
  ?uri nif:isString ?text
 }
-OFFSET 1000
 LIMIT 20

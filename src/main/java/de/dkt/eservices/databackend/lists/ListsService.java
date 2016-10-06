@@ -39,6 +39,7 @@ public class ListsService {
 			while (res.hasNext()) {
 				QuerySolution qs = res.next();
 				String contextUrl = qs.get("uri").toString();
+				System.out.println("URI: "+contextUrl);
 				Model m = NIFWriter.initializeOutputModel();
 				try {
 					qexec = sparqlService.createQueryExecution("fetch-context-properties.txt",contextUrl);

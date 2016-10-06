@@ -60,6 +60,8 @@ public class SparqlService {
 	}
 
 	public QueryExecution createQueryExecution(Query query) {
+//		System.out.println(sparqlEndpoint);
+//		System.out.println(query.toString());
 		return QueryExecutionFactory.sparqlService(sparqlEndpoint, query);
 	}
 
