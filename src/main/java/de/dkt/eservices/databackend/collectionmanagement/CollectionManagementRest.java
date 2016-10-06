@@ -152,11 +152,11 @@ public class CollectionManagementRest extends BaseRestController{
 	}
 
 	
-	@RequestMapping(value = "/data-backend/{collection}/documents/{document}", method = { RequestMethod.GET })
+	@RequestMapping(value = "/data-backend/{collection}/documents", method = { RequestMethod.GET })
 	public ResponseEntity<String> getDocument(
 			HttpServletRequest request, 
 			@PathVariable(value = "collection") String collectionName,
-			@PathVariable(value = "document") String documentName,
+			@RequestParam(value = "document") String documentName,
 			@RequestParam(value = "user", required=false) String user,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
@@ -171,7 +171,7 @@ public class CollectionManagementRest extends BaseRestController{
 	}	
 
 	
-	@RequestMapping(value = "/data-backend/{collection}/documents/{document}", method = { RequestMethod.PUT })
+	@RequestMapping(value = "/data-backend/{collection}/documents", method = { RequestMethod.PUT })
 	public ResponseEntity<String> updateDocument(
 			HttpServletRequest request, 
 			@RequestParam(value = "input", required = false) String input,
@@ -188,7 +188,7 @@ public class CollectionManagementRest extends BaseRestController{
 			@RequestParam(value = "language", required = false) String language,
 
 			@PathVariable(value = "collection") String collectionName,
-			@PathVariable(value = "document") String documentName,
+			@RequestParam(value = "document") String documentName,
 			@RequestParam(value = "documentDescription", required = false) String documentDescription,
 			@RequestParam(value = "user", required = false) String user,
 			@RequestParam(value = "format", required = false) String format,
@@ -230,13 +230,13 @@ public class CollectionManagementRest extends BaseRestController{
 		}
 	}
 
-	@RequestMapping(value = "/data-backend/{collectionName}/documents/{documentName}", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/data-backend/{collectionName}/documents", method = { RequestMethod.DELETE })
 	public ResponseEntity<String> deleteDocument(
 			HttpServletRequest request, 
 			@RequestHeader(value = "Accept", required = false) String acceptHeader,
 			@RequestHeader(value = "Content-Type", required = false) String contentTypeHeader,
 			@PathVariable(value = "collectionName") String collectionName,
-			@PathVariable(value = "documentName") String documentName,
+			@RequestParam(value = "documentName") String documentName,
 			@RequestParam(value = "user", required = false) String user,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
