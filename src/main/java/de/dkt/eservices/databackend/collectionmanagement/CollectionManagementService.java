@@ -97,16 +97,9 @@ public class CollectionManagementService {
 		}
 	}
 	
-	public boolean addDocumentToCollection(String collectionName, String user, String documentName, String fileName, byte[] content, String analysis, String contentType) {
+	public boolean addDocumentToCollection(String collectionName, String user, String documentName, String fileName, byte[] content, int analysis, String contentType) {
 		try{
-			int pipelineId = 0;
-			if(analysis.equalsIgnoreCase("ner_en")){
-				pipelineId = 101;
-			}
-			else if(analysis.equalsIgnoreCase("ner_de")){
-				pipelineId = 102;
-			}
-
+			int pipelineId = analysis;
 			HttpResponse<String> response = Unirest.post(baseURL+"/document-storage/collections/"+collectionName+"/documents").
 					header("Content-Type", contentType).
 					queryString("filename", fileName).

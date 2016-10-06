@@ -117,45 +117,28 @@ public class CollectionManagementRest extends BaseRestController{
 	}
 	
 
-	@RequestMapping(value = "/data-backend/{collection}/documents/{documentName}", method = { RequestMethod.POST })
+	@RequestMapping(value = "/data-backend/{collection}/documents", method = { RequestMethod.POST })
 	public ResponseEntity<String> addDocumentToCollection(
 			HttpServletRequest request, 
 			@RequestHeader(value = "Accept", required = false) String acceptHeader,
 			@RequestHeader(value = "Content-Type", required = false) String contentTypeHeader,
 
 			@PathVariable(value = "collection") String collectionName,
-			@PathVariable(value = "documentName") String documentName,
+			@RequestParam(value = "documentName", required = false) String documentName,
 			@RequestParam(value = "fileName", required = false) String fileName,
 			@RequestParam(value = "user", required = false) String user,
 			@RequestParam(value = "format", required = false) String format,
-			@RequestParam(value = "analysis", required = false) String analysis,
+			@RequestParam(value = "pipeline", required = false) int pipeline,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
-//			if(input==null){
-//				input=postBody;
-//				if(input==null){
-//	            	logger.error("No text to process.");
-//	                throw new BadRequestException("No text to process.");
-//				}
-//			}
-//	        NIFParameterSet nifParameters = this.normalizeNif(input, informat, outformat, postBody, acceptHeader, contentTypeHeader, prefix);
-//	        Model inModel = ModelFactory.createDefaultModel();
-//
-//	        if (nifParameters.getInformat().equals(RDFConstants.RDFSerialization.PLAINTEXT)) {
-//	            rdfConversionService.plaintextToRDF(inModel, nifParameters.getInput(),language, nifParameters.getPrefix());
-//	        } else {
-//	            inModel = rdfConversionService.unserializeRDF(nifParameters.getInput(), nifParameters.getInformat());
-//	        }
-			
-			//TODO Add all the other possible pipelines
-			InputStream is = new FileInputStream(filesFolder + fileName);
+//			InputStream is = new FileInputStream(filesFolder + fileName);
+			InputStream is = new FileInputStream(fileName);
 			byte[] contentArray = IOUtils.toByteArray(is);
 
 			String result = "";
-			boolean documentId = cms.addDocumentToCollection(collectionName, user, documentName, fileName, 
-					contentArray, analysis, contentTypeHeader);
+			boolean documentId = cms.addDocumentToCollection(collectionName, user, documentName, fileName, contentArray, pipeline, contentTypeHeader);
 			if(documentId){
-				result = "The document "+documentName+" [with Id="+documentId+"] has been successfully created!!";
+				result = "The document "+documentName+" has been successfully created!!";
 			}
 			else{
 				result = "The document "+documentName+" has NOT been created. The process has failed!!!!";
