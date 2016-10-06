@@ -128,7 +128,7 @@ public class CollectionManagementRest extends BaseRestController{
 			@RequestParam(value = "fileName", required = false) String fileName,
 			@RequestParam(value = "user", required = false) String user,
 			@RequestParam(value = "format", required = false) String format,
-			@RequestParam(value = "pipeline", required = false) int pipeline,
+			@RequestParam(value = "pipeline", required = false, defaultValue="1") int pipeline,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
 //			InputStream is = new FileInputStream(filesFolder + fileName);
