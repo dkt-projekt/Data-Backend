@@ -36,12 +36,14 @@ public class GeolocalizationService {
 			while (res.hasNext()) {
 				QuerySolution qs = res.next();
 				String uri = qs.get("uri").toString();
-				String latitude = qs.get("latitude").toString();
-				String longitude = qs.get("longitude").toString();
+				float latitude = qs.get("latitude").asLiteral().getFloat();
+				float longitude = qs.get("longitude").asLiteral().getFloat();
 
+				System.out.println(latitude + "--- " + longitude);
+				
 				if( counter<limit ){
-					meanLat += Float.parseFloat(latitude);
-					meanLong += Float.parseFloat(longitude);
+					meanLat += latitude;
+					meanLong += longitude;
 					counter++;
 					output2 += "L.marker(["+latitude+", "+longitude+"]).addTo(mymap)";
 					output2 += "    .bindPopup('"+uri+"')";

@@ -3,8 +3,9 @@ prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#>
 prefix dktnif: <http://dkt.dfki.de/ontologies/nif#> 
 prefix time: <http://www.w3.org/2006/time#>
 
-select ?uri ?startdate ?enddate WHERE{ 
+select ?uri ?startdate ?enddate ?text WHERE{ 
  ?uri a nif:Context .
+ ?uri nif:isString ?text .
  ?s  nif:referenceContext ?uri .
  ?s time:intervalStarts    ?startdate .
  ?s time:intervalFinishes  ?enddate 

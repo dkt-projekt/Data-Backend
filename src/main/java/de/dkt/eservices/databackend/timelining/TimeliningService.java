@@ -50,10 +50,10 @@ public class TimeliningService {
 					String enddate = qs.get("enddate").toString();
 					String text = qs.get("text").toString();
 
-					System.out.println(uri + "--"+startdate + " -- " + enddate);
+//					System.out.println(uri + "--"+startdate + " -- " + enddate);
 					
 					String dateRange = startdate+"_"+enddate;
-					System.out.println("-------DEBUG: "+dateRange);
+//					System.out.println("-------DEBUG: "+dateRange);
 
 					if(!dateRange.contains("null") && (counter<limit) ){
 						JSONObject mediaTDoc = new JSONObject();
