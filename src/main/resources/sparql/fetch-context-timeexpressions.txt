@@ -1,11 +1,12 @@
 prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
 prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#>
 prefix dktnif: <http://dkt.dfki.de/ontologies/nif#> 
+prefix time: <http://www.w3.org/2006/time#>
 
 select ?uri ?startdate ?enddate WHERE{ 
  ?uri a nif:Context .
  ?s  nif:referenceContext ?uri .
- ?s dktnif:meanDateEnd    ?enddate .
- ?s dktnif:meanDateStart  ?startdate 
+ ?s time:intervalStarts    ?startdate .
+ ?s time:intervalFinishes  ?enddate 
 }
 LIMIT 500000000

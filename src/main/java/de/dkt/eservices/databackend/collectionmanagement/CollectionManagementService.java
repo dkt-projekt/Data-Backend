@@ -104,6 +104,7 @@ public class CollectionManagementService {
 	public boolean addDocumentToCollection(String collectionName, String user, String documentName, String fileName, byte[] content, int analysis, String contentType) {
 		try{
 			int pipelineId = analysis;
+			System.out.println();
 			HttpResponse<String> response = Unirest.post(baseURL+"/document-storage/collections/"+collectionName+"/documents").
 					header("Content-Type", contentType).
 					queryString("fileName", fileName).
