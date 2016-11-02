@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dkt</groupId>
   <artifactId>Data-Backend</artifactId>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.4</version>
   <name>Data-Backend</name>
   <description>DKT project Data Backend repository</description>
   
@@ -112,7 +112,7 @@
                 <connection>scm:git:git@github.com:dkt-projekt/Data-Backend.git</connection>
                 <url>scm:git:git@github.com/dkt-projekt/Data-Backend.git</url>
                 <developerConnection>scm:git:git@github.com:dkt-projekt/Data-Backend.git</developerConnection>
-                <tag>HEAD</tag>
+                <tag>Data-Backend-0.4</tag>
         </scm>
 
 </project>
