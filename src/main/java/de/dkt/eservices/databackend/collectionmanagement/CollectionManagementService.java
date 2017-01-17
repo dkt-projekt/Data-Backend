@@ -258,18 +258,14 @@ public class CollectionManagementService {
 				String type = mm.get(typeTag);
 				String label = "";
 				
-				String taType = null;
 				if(type.contains("Location")){
 					label = "label-warning";
-					taType = "nif:EntityOccurrence";
 				}
 				else if(type.contains("Organisation")){
 					label = "label-info";
-					taType = "nif:EntityOccurrence";
 				}
 				else if(type.contains("Person")){
 					label = "label-success";
-					taType = "nif:EntityOccurrence";
 				}
 				else if(type.contains("TemporalEntity")){
 					label = "label-primary";
@@ -280,13 +276,8 @@ public class CollectionManagementService {
 
 //				System.out.println("\toffset: "+offset+" INIT: "+init+" END: "+end+"  type:"+type);
 				
-				String typeAnnotation = "";
-				if(taType != null){
-					typeAnnotation = " ta-type=\"" + taType + "\"";
-				}
-				
 				if(offset>init){
-					high = high + "(<span class=\"label "+label+"\"" + typeAnnotation + ">";
+					high = high + "(<span class=\"label "+label+"\">";
 					high = high + anno.substring(init, end);
 					high = high + "</span>)";
 
@@ -294,7 +285,7 @@ public class CollectionManagementService {
 				}
 				else{
 					high = high + anno.substring(offset, init);
-					high = high + "<span class=\"label "+label+"\"" + typeAnnotation + ">";
+					high = high + "<span class=\"label "+label+"\">";
 					high = high + anno.substring(init, end);
 					high = high + "</span>";
 				}
