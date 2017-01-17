@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.hp.hpl.jena.query.Query;
@@ -19,7 +20,10 @@ import de.dkt.eservices.databackend.collectionexploration.authorities.model.Enti
 @Service
 public class SparqlService {
 
-	String sparqlEndpoint = "http://dev.digitale-kuratierung.de:8890/sparql?default-graph-uri=http%3A%2F%2Fdigitale-kuratierung.de%2Fns%2Fgraphs%2Fmendelsohn";
+	@Value("${dkt.storage.virtuoso-sparql-endpoint}")
+	String sparqlEndpoint;
+	
+	String graph;
 	
 	Logger logger = Logger.getLogger(SparqlService.class);
 
@@ -62,7 +66,7 @@ public class SparqlService {
 	public QueryExecution createQueryExecution(Query query) {
 //		System.out.println(sparqlEndpoint);
 //		System.out.println(query.toString());
-		return QueryExecutionFactory.sparqlService(sparqlEndpoint, query);
+		return QueryExecutionFactory.sparqlService(graph, query);
 	}
 
 	public QueryExecution createQueryExecution(String file, String... args) {
@@ -71,7 +75,16 @@ public class SparqlService {
 	}
 
 	public void setCollectionName(String collectionName){
-		sparqlEndpoint = "http://dev.digitale-kuratierung.de:8890/sparql?default-graph-uri=http%3A%2F%2Fdigitale-kuratierung.de%2Fns%2Fgraphs%2F"+collectionName;
+		graph = sparqlEndpoint + "?default-graph-uri=http%3A%2F%2Fdigitale-kuratierung.de%2Fns%2Fgraphs%2F"+collectionName;
 	}
+
+	public String getSparqlEndpoint() {
+		return sparqlEndpoint;
+	}
+
+	public void setSparqlEndpoint(String sparqlEndpoint) {
+		this.sparqlEndpoint = sparqlEndpoint;
+	}
+	
 	
 }
