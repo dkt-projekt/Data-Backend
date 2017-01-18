@@ -25,7 +25,9 @@
 	<context:component-scan base-package="de.dkt.eservices.databackend.semanticexploration"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.timelining"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.collectionexploration.autoglossary"/>
-	<bean name="findAuthoritiesConfig" class="de.dkt.eservices.databackend.collectionexploration.authorities.FindAuthoritiesConfiguration"/>
+<!-- 	<context:component-scan base-package="de.dkt.eservices.databackend.collectionexploration.stats"/>
+	<context:component-scan base-package="de.dkt.eservices.databackend.collectionexploration.authorities"/> -->
+ 	<bean name="findAuthoritiesConfig" class="de.dkt.eservices.databackend.collectionexploration.authorities.FindAuthoritiesConfiguration"/>
 	<bean name="statisConfig" class="de.dkt.eservices.databackend.collectionexploration.stats.StatsConfig"/>
 	 
 </beans>

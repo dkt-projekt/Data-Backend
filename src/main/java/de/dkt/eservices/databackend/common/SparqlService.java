@@ -23,7 +23,7 @@ public class SparqlService {
 	@Value("${dkt.storage.virtuoso-sparql-endpoint}")
 	String sparqlEndpoint;
 	
-	String graph;
+	String graph;// = sparqlEndpoint + "?default-graph-uri=http%3A%2F%2Fdigitale-kuratierung.de%2Fns%2Fgraphs%2FMendelsohn";
 	
 	Logger logger = Logger.getLogger(SparqlService.class);
 
