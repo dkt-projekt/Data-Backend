@@ -257,6 +257,7 @@ public class CollectionManagementService {
 				int end = Integer.parseInt(mm.get(endTag));
 				String type = mm.get(typeTag);
 				String label = "";
+				
 				if(type.contains("Location")){
 					label = "label-warning";
 				}
