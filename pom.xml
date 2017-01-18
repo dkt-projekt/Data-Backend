@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dkt</groupId>
   <artifactId>Data-Backend</artifactId>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.5-SNAPSHOT</version>
   <name>Data-Backend</name>
   <description>DKT project Data Backend repository</description>
   
@@ -14,9 +14,15 @@
 	</properties>
 	
  <parent> 
+<<<<<<< HEAD
 		<groupId>eu.freme-project</groupId>
 		<artifactId>freme-parent</artifactId>
 		<version>0.17</version>
+=======
+    <groupId>eu.freme.e-services</groupId>
+    <artifactId>e-service-parent</artifactId>
+    <version>0.9</version>
+>>>>>>> branch 'master' of https://github.com/dkt-projekt/Data-Backend
   </parent>
   <build>
     <plugins>
@@ -35,7 +41,11 @@
 		<dependency>
 			<groupId>de.dkt</groupId>
 			<artifactId>DKTCommon</artifactId>
+<<<<<<< HEAD
 			<version>0.5-SNAPSHOT</version>
+=======
+			<version>0.4</version>
+>>>>>>> branch 'master' of https://github.com/dkt-projekt/Data-Backend
 		</dependency>
 		<dependency>
 			<groupId>net.minidev</groupId>
