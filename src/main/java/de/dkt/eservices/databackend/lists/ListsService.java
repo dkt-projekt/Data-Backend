@@ -56,7 +56,7 @@ public class ListsService {
 					}
 				}
 				try {
-					qexec = sparqlService.createQueryExecution("fetch-context-entities.txt",contextUrl);
+					qexec = sparqlService.createQueryExecution("fetch-context-entities2.txt",contextUrl);
 					ResultSet res3 = qexec.execSelect();
 					while (res3.hasNext()) {
 						QuerySolution qs3 = res3.next();
