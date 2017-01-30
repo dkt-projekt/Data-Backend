@@ -1,8 +1,5 @@
 package de.dkt.eservices.databackend.collectionmanagement;
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -10,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
