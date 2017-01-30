@@ -60,7 +60,12 @@ public class TimeliningService {
 						mediaTDoc.put("headLine", uri);
 						String docText = text;
 //						mediaTDoc.put("text", "<p>"+docText.substring(0, 250)+"...</p>");
-						mediaTDoc.put("text", "<p>" + org.json.simple.JSONObject.escape(docText.substring(0, 250)) + "</p>");
+						if(docText.length()>250){
+							mediaTDoc.put("text", "<p>" + org.json.simple.JSONObject.escape(docText.substring(0, 250)) + "</p>");
+						}
+						else{
+							mediaTDoc.put("text", "<p>" + org.json.simple.JSONObject.escape(docText) + "</p>");
+						}
 
 						JSONObject mediaDDoc = new JSONObject();
 						mediaDDoc.put("day",startdate.substring(8, 10));

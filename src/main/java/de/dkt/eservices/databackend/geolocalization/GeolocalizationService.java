@@ -51,22 +51,27 @@ public class GeolocalizationService {
 					output2 += "        ;";
 				}
 			}
-			meanLat = meanLat/counter;
-			meanLong = meanLong/counter;
+			String output="";
+			if(counter==0){
+				output = "There are no entities with geographical information, therefore no map can be shown.";
+			}
+			else{
+				meanLat = meanLat/counter;
+				meanLong = meanLong/counter;
+				output = ""
+						+ "<div class=\"container2\">"
+						+ "<div id=\"map-place\" style=\"width: 100%;height: 400px;margin: 0;padding: 1px;\"></div>"
+						+ "</div>"
+						+ "<script type=\"text/javascript\">"
+						+ "var mymap = L.map('map-place').setView(["+meanLat+", "+meanLong+"], 8);"
 
-			String output = ""
-					+ "<div class=\"container2\">"
-					+ "<div id=\"map-place\" style=\"width: 100%;height: 400px;margin: 0;padding: 1px;\"></div>"
-					+ "</div>"
-					+ "<script type=\"text/javascript\">"
-					+ "var mymap = L.map('map-place').setView(["+meanLat+", "+meanLong+"], 8);"
+		            + "L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {"
+		            + "    attribution: '&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors'"
+		            + "}).addTo(mymap);";
 
-	            + "L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {"
-	            + "    attribution: '&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors'"
-	            + "}).addTo(mymap);";
-
-			output += output2;
-			output += "</script>";
+				output += output2;
+				output += "</script>";
+			}
 			return output;
 		}
 		catch(Exception e){

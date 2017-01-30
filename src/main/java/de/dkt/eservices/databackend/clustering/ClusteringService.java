@@ -35,16 +35,17 @@ public class ClusteringService {
 
 		QueryExecution qexec = null;
 		try {
-			qexec = sparqlService.createQueryExecution("fetch-context-timeexpressions.txt");
+			qexec = sparqlService.createQueryExecution("fetch-context-entities.txt");
 			ResultSet res = qexec.execSelect();
 			while (res.hasNext()) {
 				QuerySolution qs = res.next();
 				String uri = qs.get("uri").toString();
 				String anchorOf = qs.get("anchorof").toString();
-				String taIdentRef = qs.get("taidentref").toString();
+				String taIdentRef = qs.get("taclassref").toString();
 //				String text = qs.get("text").toString();
-				String anchorText = anchorOf./*replace('\n', ' ').*/replace('\'', ' ').replace(',', '_').replaceAll("\\s+", " ");
+				String anchorText = anchorOf./*replace('\n', ' ').*/replace('\'', ' ').replace('"', ' ').replace(',', '_').replaceAll("\\s+", " ");
 
+				anchorText = anchorText.substring(0, anchorText.indexOf('^')).trim();
 				HashMap<SemanticEntity,Integer> entitiesMap;
 				if(docsMap.containsKey(uri)){
 					entitiesMap = docsMap.get(uri);
@@ -104,9 +105,10 @@ public class ClusteringService {
 		//			System.out.println(arff);
 		//			System.out.println("-------------------------------");
 
+		System.out.println(arff);
 		HttpResponse<String> response = null;
 		try {
-			response = Unirest.post("http://dev.digitale-kuratierung.de/api/e-clustering/generateClusters")
+			response = Unirest.post("https://dev.digitale-kuratierung.de/api/e-clustering/generateClusters")
 					.queryString("algorithm", "kmeans")
 					.queryString("language", "en")
 					//.field("file", new File("/tmp/file"))

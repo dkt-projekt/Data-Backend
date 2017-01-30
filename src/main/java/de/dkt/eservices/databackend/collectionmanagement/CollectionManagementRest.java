@@ -1,5 +1,8 @@
 package de.dkt.eservices.databackend.collectionmanagement;
 
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -7,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -48,7 +52,7 @@ public class CollectionManagementRest extends BaseRestController{
 	@Autowired
 	RDFConversionService rdfConversionService;
 	
-	@Value("${dkt.services.baseUrl:http://dev.digitale-kuratierung.de/api}")
+	@Value("${dkt.services.baseUrl:https://dev.digitale-kuratierung.de/api}")
 	String baseURL;
 
 	@Value("${dkt.services.temporal-document-storage:http:/opt/data/tmp/}")
@@ -61,7 +65,7 @@ public class CollectionManagementRest extends BaseRestController{
 			@RequestParam(value = "limit", required = false, defaultValue="0") int limit,
 			@RequestBody(required = false) String postBody) throws Exception {
 		try {
-			HttpResponse<String> response = Unirest.post(baseURL+"/document-storage/collections").asString();
+			HttpResponse<String> response = Unirest.get(baseURL+"/document-storage/collections").asString();
 			return new ResponseEntity<String>(response.getBody(), HttpStatus.valueOf(response.getStatus()));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -250,6 +254,18 @@ public class CollectionManagementRest extends BaseRestController{
 			logger.error(e.getMessage());
 			throw e;
 		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		HttpResponse<String> response = Unirest.get("https://dev.digitale-kuratierung.de/api/data-backend/listCollections").
+				header("Content-Type", "application/zip").
+				queryString("fileName", "randomrandom.zip").
+				queryString("pipeline", 4).
+				asString();
+		System.out.println("BBBBOOOODDDDDYYYY: "+response.getBody());
+//		String expectedDocuments = "{\"models\":{\"model4\":{\"modelName\":\"temp_en\",\"models\":\"englishDates\",\"informat\":\"turtle\",\"modelId\":4,\"language\":\"en\",\"modelType\":\"timex\",\"analysis\":\"temp\",\"outformat\":\"turtle\",\"url\":\"/e-nlp/namedEntityRecognition\"},\"model3\":{\"mode\":\"all\",\"modelName\":\"ner_PER_ORG_LOC_en_all\",\"models\":\"ner-wikinerEn_PER;ner-wikinerEn_ORG;ner-wikinerEn_LOC\",\"informat\":\"turtle\",\"modelId\":3,\"language\":\"en\",\"modelType\":\"ner\",\"analysis\":\"ner\",\"outformat\":\"turtle\",\"url\":\"/e-nlp/namedEntityRecognition\"},\"model2\":{\"mode\":\"link\",\"modelName\":\"ner_PER_ORG_LOC_en_link\",\"models\":\"ner-wikinerEn_PER;ner-wikinerEn_ORG;ner-wikinerEn_LOC\",\"informat\":\"turtle\",\"modelId\":2,\"language\":\"en\",\"modelType\":\"ner\",\"analysis\":\"ner\",\"outformat\":\"turtle\",\"url\":\"/e-nlp/namedEntityRecognition\"},\"model1\":{\"mode\":\"spot\",\"modelName\":\"ner_PER_ORG_LOC_en_spot\",\"models\":\"ner-wikinerEn_PER;ner-wikinerEn_ORG;ner-wikinerEn_LOC\",\"informat\":\"turtle\",\"modelId\":1,\"language\":\"en\",\"modelType\":\"ner\",\"analysis\":\"ner\",\"outformat\":\"turtle\",\"url\":\"/e-nlp/namedEntityRecognition\"}}}";
+//		Assert.assertEquals(expectedDocuments,response.getBody());
+
 	}
 	
 }
