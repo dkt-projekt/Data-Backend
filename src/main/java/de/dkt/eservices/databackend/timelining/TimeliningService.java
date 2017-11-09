@@ -30,7 +30,7 @@ public class TimeliningService {
 
 			JSONObject mediaT = new JSONObject();
 			mediaT.put("headLine", collectionName);
-			mediaT.put("text", "<p>Timelining representation of the documents of the collection.</p>");
+			mediaT.put("text", "<p>Timelining representation of the documents of collection: "+collectionName+"</p>");
 
 			JSONObject titleObject = new JSONObject();
 //			titleObject.put("media", mediaO);
@@ -49,6 +49,7 @@ public class TimeliningService {
 					String startdate = qs.get("startdate").toString();
 					String enddate = qs.get("enddate").toString();
 					String text = qs.get("text").toString();
+					String anchor = qs.get("anchor").toString();
 
 //					System.out.println(uri + "--"+startdate + " -- " + enddate);
 					
@@ -57,7 +58,8 @@ public class TimeliningService {
 
 					if(!dateRange.contains("null") && (counter<limit) ){
 						JSONObject mediaTDoc = new JSONObject();
-						mediaTDoc.put("headLine", uri);
+//						mediaTDoc.put("headLine", uri);
+						mediaTDoc.put("headLine", anchor);
 						String docText = text;
 //						mediaTDoc.put("text", "<p>"+docText.substring(0, 250)+"...</p>");
 						if(docText.length()>250){

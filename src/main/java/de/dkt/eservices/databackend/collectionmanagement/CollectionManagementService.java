@@ -163,8 +163,10 @@ public class CollectionManagementService {
 		}
 
 		String annotatedContent = NIFReader.model2String(m, RDFSerialization.TURTLE);
+//		String jsonAnnotatedContent = NIFReader.model2String(m, RDFSerialization.JSON_LD);
 		document.put("uri", contextUrl);
 		document.put("nifcontent", annotatedContent);
+//		document.put("nifjsoncontent", jsonAnnotatedContent);
 		if(highlighted){
 			String highlightedContent = highlighText(m);
 			document.put("highcontent", highlightedContent);
@@ -259,16 +261,16 @@ public class CollectionManagementService {
 				String label = "";
 				
 				if(type.contains("Location")){
-					label = "label-warning";
+					label = "label-primary";
 				}
 				else if(type.contains("Organisation")){
-					label = "label-info";
-				}
-				else if(type.contains("Person")){
 					label = "label-success";
 				}
+				else if(type.contains("Person")){
+					label = "label-warning";
+				}
 				else if(type.contains("TemporalEntity")){
-					label = "label-primary";
+					label = "label-danger";
 				}
 				else{
 					label = "label-default";

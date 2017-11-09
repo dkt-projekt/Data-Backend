@@ -65,9 +65,12 @@ public class GeolocalizationService {
 						+ "<script type=\"text/javascript\">"
 						+ "var mymap = L.map('map-place').setView(["+meanLat+", "+meanLong+"], 8);"
 
-		            + "L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {"
-		            + "    attribution: '&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors'"
-		            + "}).addTo(mymap);";
+//		            + "L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {"
+//		            + "    attribution: '&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors'"
+//		            + "}).addTo(mymap);";
+		        	+ "L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {"
+	                + "maxZoom: 18, attribution: '&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>, &copy; <a href=\"https://carto.com/attribution\">CARTO</a>'"
+	        		+ "}).addTo(mymap);";
 
 				output += output2;
 				output += "</script>";

@@ -22,6 +22,7 @@
 	<context:component-scan base-package="de.dkt.eservices.databackend.collectionmanagement"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.geolocalization"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.lists"/>
+	<context:component-scan base-package="de.dkt.eservices.databackend.entitymap"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.semanticexploration"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.timelining"/>
 	<context:component-scan base-package="de.dkt.eservices.databackend.collectionexploration.autoglossary"/>
