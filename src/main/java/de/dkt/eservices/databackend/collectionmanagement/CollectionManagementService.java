@@ -41,7 +41,7 @@ public class CollectionManagementService {
 	@Autowired
 	SparqlService sparqlService;
 
-	@Value("${dkt.services.baseUrl:http://dev.digitale-kuratierung.de/api}")
+	@Value("${dkt.services.baseUrl:https://dev.digitale-kuratierung.de/api}")
 	String baseURL;
 
 	public boolean createCollection(String collectionName, String description, String user, int analysis) throws ExternalServiceFailedException {

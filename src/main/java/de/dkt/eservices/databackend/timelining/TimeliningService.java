@@ -29,7 +29,7 @@ public class TimeliningService {
 //			mediaO.put("credit", "flickr/<a href='http://www.flickr.com/photos/tm_10001/'>tm_10001</a>");
 
 			JSONObject mediaT = new JSONObject();
-			mediaT.put("headLine", collectionName);
+			mediaT.put("headline", collectionName);
 			mediaT.put("text", "<p>Timelining representation of the documents of collection: "+collectionName+"</p>");
 
 			JSONObject titleObject = new JSONObject();
@@ -58,8 +58,8 @@ public class TimeliningService {
 
 					if(!dateRange.contains("null") && (counter<limit) ){
 						JSONObject mediaTDoc = new JSONObject();
-//						mediaTDoc.put("headLine", uri);
-						mediaTDoc.put("headLine", anchor);
+//						mediaTDoc.put("headline", uri);
+						mediaTDoc.put("headline", anchor);
 						String docText = text;
 //						mediaTDoc.put("text", "<p>"+docText.substring(0, 250)+"...</p>");
 						if(docText.length()>250){
