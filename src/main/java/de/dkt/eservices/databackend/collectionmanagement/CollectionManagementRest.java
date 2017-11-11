@@ -135,6 +135,7 @@ public class CollectionManagementRest extends BaseRestController{
 			
 			//System.out.println(fileName);
 			logger.info("FILENAME: "+fileName);
+			logger.info("DOCNAME: "+documentName);
 			
 			InputStream is = new FileInputStream(fileName);
 			byte[] contentArray = IOUtils.toByteArray(is);
