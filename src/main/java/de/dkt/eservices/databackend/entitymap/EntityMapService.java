@@ -139,7 +139,7 @@ public class EntityMapService {
 		String packageNames = "";
 		for (String string : elements) {
 			if(string.contains("/") && string.contains("#")){
-				string = string.substring(string.lastIndexOf('/'), string.indexOf('#'));
+				string = string.substring(string.lastIndexOf('/')+1, string.indexOf('#'));
 			}
 			packageNames += ", '"+string.replace("\r\n", " ")+"'"; 
 		}
@@ -147,43 +147,43 @@ public class EntityMapService {
 
 		int matrix[][] = new int[elements.size()][elements.size()];
 
-		System.out.println("Documents: ");
-		for (String string : documentsUriList) {
-			System.out.println("\t"+string); 
-		}
-		System.out.println("Entities: ");
-		for (String string : entitiesList) {
-			System.out.println("\t"+string); 
-		}
-		System.out.println("Timex: ");
-		for (String string : temporalExpressionsList) {
-			System.out.println("\t"+string); 
-		}
-		System.out.println("-------------------");
-		System.out.println("-------------------");
-		System.out.println("-------------------");
-
-		System.out.println("Documents2Entities: ");
-		Set<String> d2e = documents2Entities.keySet();
-		for (String string : d2e) {
-			System.out.println("\t"+string);
-			for (String string2 : documents2Entities.get(string)) {
-				System.out.println("\t\t"+string2);
-			}
-		}
-		System.out.println("Documents2Timex: ");
-		Set<String> d2t = documents2Timex.keySet();
-		for (String string : d2t) {
-			System.out.println("\t"+string);
-			for (String string2 : documents2Timex.get(string)) {
-				System.out.println("\t\t"+string2);
-			}
-		}
-		
-		
-		System.out.println("-------------------");
-		System.out.println("-------------------");
-		System.out.println("-------------------");
+//		System.out.println("Documents: ");
+//		for (String string : documentsUriList) {
+//			System.out.println("\t"+string); 
+//		}
+//		System.out.println("Entities: ");
+//		for (String string : entitiesList) {
+//			System.out.println("\t"+string); 
+//		}
+//		System.out.println("Timex: ");
+//		for (String string : temporalExpressionsList) {
+//			System.out.println("\t"+string); 
+//		}
+//		System.out.println("-------------------");
+//		System.out.println("-------------------");
+//		System.out.println("-------------------");
+//
+//		System.out.println("Documents2Entities: ");
+//		Set<String> d2e = documents2Entities.keySet();
+//		for (String string : d2e) {
+//			System.out.println("\t"+string);
+//			for (String string2 : documents2Entities.get(string)) {
+//				System.out.println("\t\t"+string2);
+//			}
+//		}
+//		System.out.println("Documents2Timex: ");
+//		Set<String> d2t = documents2Timex.keySet();
+//		for (String string : d2t) {
+//			System.out.println("\t"+string);
+//			for (String string2 : documents2Timex.get(string)) {
+//				System.out.println("\t\t"+string2);
+//			}
+//		}
+//		
+//		
+//		System.out.println("-------------------");
+//		System.out.println("-------------------");
+//		System.out.println("-------------------");
 		Set<String> keysDocuments = documents2Entities.keySet();
 		int counter = 0;
 		for (String key : keysDocuments) {

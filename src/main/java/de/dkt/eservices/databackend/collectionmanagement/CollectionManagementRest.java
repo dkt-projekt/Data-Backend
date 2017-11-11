@@ -132,6 +132,9 @@ public class CollectionManagementRest extends BaseRestController{
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
 //			InputStream is = new FileInputStream(filesFolder + fileName);
+			
+			System.out.println(fileName);
+			
 			InputStream is = new FileInputStream(fileName);
 			byte[] contentArray = IOUtils.toByteArray(is);
 
