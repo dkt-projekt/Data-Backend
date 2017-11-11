@@ -133,7 +133,8 @@ public class CollectionManagementRest extends BaseRestController{
 		try {
 //			InputStream is = new FileInputStream(filesFolder + fileName);
 			
-			System.out.println(fileName);
+			//System.out.println(fileName);
+			logger.info("FILENAME: "+fileName);
 			
 			InputStream is = new FileInputStream(fileName);
 			byte[] contentArray = IOUtils.toByteArray(is);
