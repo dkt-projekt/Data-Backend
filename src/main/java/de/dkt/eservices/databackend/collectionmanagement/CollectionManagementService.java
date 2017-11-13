@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -134,12 +135,7 @@ public class CollectionManagementService {
 		String contextUrl = documentName;
 		Model m = NIFWriter.initializeOutputModel();
 		try {
-			if(documentName==null){
-				qexec = sparqlService.createQueryExecution("fetch-all-contexts.txt");
-			}
-			else{
-				qexec = sparqlService.createQueryExecution("fetch-context-properties.txt",contextUrl);
-			}
+			qexec = sparqlService.createQueryExecution("fetch-context-properties.txt",contextUrl);
 			Resource r = m.createResource(contextUrl);
 			ResultSet res2 = qexec.execSelect();
 			while (res2.hasNext()) {
@@ -176,6 +172,31 @@ public class CollectionManagementService {
 			String highlightedContent = highlighText(m);
 			document.put("highcontent", highlightedContent);
 		}
+		return document.toString();
+	}
+
+	public String getAllDocuments(String collectionName, String user, boolean highlighted) {
+		sparqlService.setCollectionName(collectionName);
+		
+		JSONObject document = new JSONObject();
+		
+		QueryExecution qexec = null;
+		Model m = NIFWriter.initializeOutputModel();
+		JSONArray array = new JSONArray();
+		try {
+			qexec = sparqlService.createQueryExecution("fetch-all-contexts.txt");
+			ResultSet res2 = qexec.execSelect();
+			while (res2.hasNext()) {
+				QuerySolution qs2 = res2.next();
+				document.put("uri", qs2.get("uri").toString());
+				document.put("nifcontent", qs2.get("text").toString());
+			}
+		} finally {
+			if (qexec != null) {
+				qexec.close();
+			}
+		}
+		document.put("documents", array);
 		return document.toString();
 	}
 

@@ -166,7 +166,13 @@ public class CollectionManagementRest extends BaseRestController{
 			@RequestParam(value = "user", required=false) String user,
             @RequestBody(required = false) String postBody) throws Exception {
 		try {
-			String jsonString = cms.getDocument(documentName, collectionName, user, highlighted);
+			String jsonString = null;
+			if(documentName==null){
+				jsonString = cms.getDocument(documentName, collectionName, user, highlighted);
+			}
+			else{
+				jsonString = cms.getDocument(documentName, collectionName, user, highlighted);
+			}
 			HttpHeaders responseHeaders = new HttpHeaders();
 //			responseHeaders.add("Content-Type", RDFSerialization.JSON.name());
 			return new ResponseEntity<String>(jsonString, responseHeaders, HttpStatus.OK);
