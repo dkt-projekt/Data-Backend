@@ -186,10 +186,13 @@ public class CollectionManagementService {
 		try {
 			qexec = sparqlService.createQueryExecution("fetch-all-contexts.txt");
 			ResultSet res2 = qexec.execSelect();
+			logger.info("THERE ARE "+res2.getRowNumber()+" DOCUMENTS IN THE COLLECTION: "+collectionName);
 			while (res2.hasNext()) {
+				JSONObject document2 = new JSONObject();
 				QuerySolution qs2 = res2.next();
-				document.put("uri", qs2.get("uri").toString());
-				document.put("nifcontent", qs2.get("text").toString());
+				document2.put("uri", qs2.get("uri").toString());
+				document2.put("nifcontent", qs2.get("text").toString());
+				array.put(document2);
 			}
 		} finally {
 			if (qexec != null) {
