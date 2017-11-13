@@ -134,7 +134,12 @@ public class CollectionManagementService {
 		String contextUrl = documentName;
 		Model m = NIFWriter.initializeOutputModel();
 		try {
-			qexec = sparqlService.createQueryExecution("fetch-context-properties.txt",contextUrl);
+			if(documentName==null){
+				qexec = sparqlService.createQueryExecution("fetch-all-contexts.txt");
+			}
+			else{
+				qexec = sparqlService.createQueryExecution("fetch-context-properties.txt",contextUrl);
+			}
 			Resource r = m.createResource(contextUrl);
 			ResultSet res2 = qexec.execSelect();
 			while (res2.hasNext()) {
