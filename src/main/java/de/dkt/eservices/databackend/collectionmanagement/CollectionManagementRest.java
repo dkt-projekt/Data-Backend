@@ -168,7 +168,7 @@ public class CollectionManagementRest extends BaseRestController{
 		try {
 			String jsonString = null;
 			if(documentName==null){
-				jsonString = cms.getDocument(documentName, collectionName, user, highlighted);
+				jsonString = cms.getAllDocuments(collectionName, user, highlighted);
 			}
 			else{
 				jsonString = cms.getDocument(documentName, collectionName, user, highlighted);
